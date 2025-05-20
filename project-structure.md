@@ -24,6 +24,12 @@ AI_MATH_CHATBOT/
 │   ├── AI-MATH-CHATBOT-PRD.md
 │   ├── Global_Rules.md
 │   └── Project_Rules.md
+├── assets/                   # Project screenshots and demo images
+│   ├── demo.png
+│   ├── file_upload_demo.png
+│   ├── Initial_page_dark_mode.png
+│   ├── Initial_page_light_mode.png
+│   └── voice_input_demo.png
 ├── backend/                  # Backend application
 │   ├── .gitignore
 │   ├── Dockerfile
