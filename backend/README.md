@@ -54,13 +54,16 @@ See [project-structure.md](../project-structure.md) for a detailed breakdown of 
 
 ## 🔗 API Endpoints
 
-- `/chats`, `/chats/{chat_id}`: Chat CRUD
-- `/chats/{chat_id}/messages/`: Message CRUD
-- `/chats/{chat_id}/stream`: Streaming LLM responses
-- `/upload-file`: File upload (PDF, image, DOCX, text; **up to 5 files per request**)
-- `/stt`: Speech-to-text (Whisper)
-
-See `app/routers/` for implementation details.
+- `POST /chats`: Create a new chat
+- `GET /chats`: Get all chats
+- `GET /chats/{chat_id}`: Get a specific chat
+- `PUT /chats/{chat_id}`: Update a chat
+- `DELETE /chats/{chat_id}`: Delete a chat
+- `POST /chats/{chat_id}/messages/`: Send a message to a chat
+- `GET /chats/{chat_id}/messages/`: Get all messages in a chat
+- `POST /chats/{chat_id}/stream`: Send a message and receive a streaming response
+- `POST /upload-file`: Upload up to 5 files (PDF, image, DOCX, text) at once
+- `POST /stt`: Transcribe audio to text
 
 ## 🏃 Running the Backend
 
