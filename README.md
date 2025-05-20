@@ -9,9 +9,30 @@ An advanced AI-powered chatbot designed to help students and professionals solve
 - **LaTeX rendering** for beautiful math display (KaTeX)
 - **File upload support** (images, PDFs, text, DOCX) with intelligent backend processing (**up to 5 files at once**)
 - **Speech-to-text** for voice input (Whisper integration)
-- **Streaming responses** for real-time, interactive UX
+- **Streaming responses** with typing effect for real-time, interactive UX
 - **Chat history management** with persistent storage (SQLite + SQLAlchemy)
 - **Robust error handling** and accessibility (A11y) features
+- **ChatGPT-like UI** with Shadcn UI components
+- **Chat History Sidebar** with search, rename, and delete functionality
+- **User's response** with copy to clipboard, regenerate, and edit functionality
+- **Model's response** with copy to clipboard and regenerate functionality
+- **Context Management** with multi-turn chat history for coherent, contextual conversations
+
+## Demo Screens
+
+Here are some screenshots demonstrating the AI Math Chatbot in action:
+
+- **Initial Page (Light Mode):**
+  ![Initial Page Light Mode](assets/Initial_page_light_mode.png)
+- **Initial Page (Dark Mode):**
+  ![Initial Page Dark Mode](assets/Initial_page_dark_mode.png)
+- **File Upload Demo:**
+  ![File Upload Demo](assets/file_upload_demo.png)
+- **Voice Input Demo:**
+  ![Voice Input Demo](assets/voice_input_demo.png)
+- **Chat Demo:**
+  ![Chat Demo](assets/demo.png)
+
 
 ## 🧠 AI & Engineering Skills Demonstrated
 
@@ -138,16 +159,14 @@ Alternatively, use Docker Compose to run both frontend and backend:
 ## 🔗 API Endpoints
 
 ### Backend API
-- `POST /chats`: Create a new chat
-- `GET /chats`: Get all chats
-- `GET /chats/{chat_id}`: Get a specific chat
-- `PUT /chats/{chat_id}`: Update a chat
-- `DELETE /chats/{chat_id}`: Delete a chat
-- `POST /chats/{chat_id}/messages/`: Send a message to a chat
-- `GET /chats/{chat_id}/messages/`: Get all messages in a chat
-- `POST /chats/{chat_id}/stream`: Send a message and receive a streaming response
-- `POST /upload-file`: Upload up to 5 files (PDF, image, DOCX, text) at once
-- `POST /stt`: Transcribe audio to text
+- `/chats`, `/chats/{chat_id}`: Chat CRUD
+- `/chats/{chat_id}/messages/`: Message CRUD
+- `/chats/{chat_id}/stream`: Streaming LLM responses
+- `/upload-file`: File upload (PDF, image, DOCX, text; **up to 5 files per request**)
+- `/stt`: Speech-to-text (Whisper)
+
+See `app/routers/` for implementation details.
+
 
 ### Frontend API Routes
 - `POST /api/chat`: Send a message to the chatbot (proxies to backend)
@@ -159,6 +178,17 @@ Alternatively, use Docker Compose to run both frontend and backend:
 - **File Upload:** Multi-part form data for sending up to 5 files to backend
 - **Speech-to-Text:** Audio recordings sent to backend for transcription
 - **Centralized API Logic:** All API calls managed in `frontend/lib/api-service.ts`
+
+## 🎤 Voice Input
+
+- **Speech-to-Text:** The chatbot supports voice input using Whisper (via Hugging Face Inference API). Users can record their math questions or problems directly in the chat interface using the microphone button.
+- **Real-Time Transcription:** Audio is streamed to the backend, transcribed to text, and inserted into the chat input for review and editing before sending.
+- **Supported Formats:** Accepts standard audio formats (e.g., WAV, MP3, M4A, WebM) as supported by browsers and Whisper API.
+- **Accessibility:** Voice input is fully accessible via keyboard navigation and screen readers. Visual feedback is provided during recording and transcription.
+- **Error Handling:** User-friendly error messages are shown for unsupported formats, transcription failures, or permission issues.
+- **Privacy:** Audio is processed in-memory and not stored on the server beyond the request lifecycle.
+- **Frontend Display:** A modal or inline UI provides recording controls and displays transcription progress. See the demo screenshot below:
+
 
 ## 📂 File Handling
 
